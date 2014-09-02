@@ -1,12 +1,15 @@
 <ion-header-bar class="bar-assertive">
     <h1 class="title">ControlView</h1>
+    <div class="buttons">
+    <button class="button icon-right ion-chevron-right  button-clear" ng-click="closeLogin()">New work</button>
+  </div>
 </ion-header-bar>
 <ion-content>
     <div class="list">
         <div class="item item-divider">
             Obras
         </div>
-        <a class="item item-icon-left" href="#">
+        <a class="item item-icon-left" href="javascript:;" ng-click="newWork()">
             <i class="icon ion-ios7-gear"></i>
             Obra 1
             <span class="badge badge-assertive"><i class="ion-arrow-right-c"></i>

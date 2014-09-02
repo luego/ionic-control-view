@@ -15,6 +15,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 				url: "/login",
 				templateUrl: "templates/login.html",
 				controller: 'LoginCtrl'
+			})
+			.state('newwork', {
+				url: "/new",
+				templateUrl: "templates/new.html",
+				controller: 'WorkCtrl'
 			});
 
 		$urlRouterProvider.otherwise('/login');
