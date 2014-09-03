@@ -4,27 +4,38 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'starter.controllers'])
-	.config(function ($stateProvider, $urlRouterProvider) {
-		$stateProvider
-			.state('home', {
-				url: "/home",
-				templateUrl: "templates/home.html",
-				controller: 'HomeCtrl'
-			})
-			.state('login', {
-				url: "/login",
-				templateUrl: "templates/login.html",
-				controller: 'LoginCtrl'
-			})
-			.state('newwork', {
-				url: "/new",
-				templateUrl: "templates/new.html",
-				controller: 'WorkCtrl'
-			});
 
-		$urlRouterProvider.otherwise('/login');
-	})
-	.run(function ($ionicPlatform) {
+.constant('$ionicLoadingConfig', {
+	template: 'Loading...'
+})
+
+.config(function ($stateProvider, $urlRouterProvider) {
+	$stateProvider
+		.state('home', {
+			url: "/home",
+			templateUrl: "templates/home.html",
+			controller: 'HomeCtrl'
+		})
+		.state('login', {
+			url: "/login",
+			templateUrl: "templates/login.html",
+			controller: 'LoginCtrl'
+		})
+		.state('newwork', {
+			url: "/new",
+			templateUrl: "templates/new.html",
+			controller: 'WorkCtrl'
+		});
+
+	$urlRouterProvider.otherwise('/login');
+})
+	.run(function ($ionicPlatform, $ionicLoading, $rootScope) {
+		$rootScope.show = function () {
+			$ionicLoading.show();
+		};
+		$rootScope.hide = function () {
+			$ionicLoading.hide();
+		};
 		$ionicPlatform.ready(function () {
 			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 			// for form inputs)
