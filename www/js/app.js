@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .constant('$ionicLoadingConfig', {
 	template: 'Loading...'
@@ -25,15 +25,20 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 			url: "/new",
 			templateUrl: "templates/new.html",
 			controller: 'WorkCtrl'
+		})
+		.state('map', {
+			url: "/map",
+			templateUrl: "templates/map.html",
+			controller: 'MapCtrl'
 		});
 
 	$urlRouterProvider.otherwise('/login');
 })
 	.run(function ($ionicPlatform, $ionicLoading, $rootScope) {
-		$rootScope.show = function () {
+		$rootScope.showMask = function () {
 			$ionicLoading.show();
 		};
-		$rootScope.hide = function () {
+		$rootScope.hideMask = function () {
 			$ionicLoading.hide();
 		};
 		$ionicPlatform.ready(function () {
